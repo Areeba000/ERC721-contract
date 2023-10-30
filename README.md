@@ -1,4 +1,4 @@
-# Smart Contracts README
+# ERC721 Smart Contracts 
 
 This repository contains multiple smart contracts for various purposes, including ERC721 Airdrop, ICO, Token Swap, Staking, Diamond Proxy, and Lock Contract.
 
