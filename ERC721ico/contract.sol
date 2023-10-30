@@ -53,3 +53,30 @@ interface MyNFT is IERC721 {
         rate = newRate;
     }
 }
+//ERC721 MYNFT
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.16;
+
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyNFT is ERC721URIStorage, Ownable {
+    mapping (address=>bool)public allowed;
+    uint256 public nftcounter;
+
+    constructor() ERC721("genesis", "JE") {}
+
+    modifier allowaddress(){
+        require(allowed[msg.sender],"you are not allowaddress");
+        _;
+    }
+
+    function nftmint(address _to) external allowaddress {
+        nftcounter++;
+        _mint(_to,nftcounter);
+    }
+
+     function addaddress(address _allowedperson) public onlyOwner {
+        allowed[_allowedperson] = true;
+    }
+}
